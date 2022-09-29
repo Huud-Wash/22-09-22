@@ -1,6 +1,7 @@
-# 22-09-22
+import 'dart:io';
 
 import 'package:flutter/material.dart';
+import 'package:http/http.dart';
 
 class login_page extends StatefulWidget {
   const login_page({Key? key}) : super(key: key);
@@ -10,6 +11,13 @@ class login_page extends StatefulWidget {
 }
 
 class _login_pageState extends State<login_page> {
+  final _formkey = GlobalKey<FormState>();
+  final _nameController = TextEditingController();
+  final _emailController = TextEditingController();
+  final _passwordController = TextEditingController();
+  final _phoneController = TextEditingController();
+  final _classController = TextEditingController();
+
   @override
   Widget build(BuildContext context) {
     return Material(
@@ -22,12 +30,15 @@ class _login_pageState extends State<login_page> {
             mainAxisAlignment: MainAxisAlignment.center,
             children: [
               TextField(
+                controller: _nameController,
+                keyboardType: TextInputType.name,
                 decoration: InputDecoration(
                   border: OutlineInputBorder(),
                   labelText: 'Nome',
                 ),
               ),
               TextField(
+                controller: _emailController,
                 keyboardType: TextInputType.emailAddress,
                 decoration: InputDecoration(
                   border: OutlineInputBorder(),
@@ -35,12 +46,16 @@ class _login_pageState extends State<login_page> {
                 ),
               ),
               TextField(
+                controller: _phoneController,
+                keyboardType: TextInputType.number,
                 decoration: InputDecoration(
                   border: OutlineInputBorder(),
                   labelText: 'Telefone',
                 ),
               ),
               TextField(
+                controller: _classController,
+                keyboardType: TextInputType.text,
                 decoration: InputDecoration(
                   border: OutlineInputBorder(),
                   labelText: 'Turma',
@@ -48,7 +63,13 @@ class _login_pageState extends State<login_page> {
               ),
               SizedBox(height: 15),
               ElevatedButton(
-                onPressed: () {},
+                onPressed: () {
+                  print(_nameController.text);
+                  print(_emailController.text);
+                  print(_phoneController.text);
+                  print(_passwordController.text);
+                  print(_classController.text);
+                },
                 child: Text('Entrar'),
               )
             ],
